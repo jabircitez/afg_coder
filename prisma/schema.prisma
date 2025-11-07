@@ -1,5 +1,4 @@
 generator client { provider = "prisma-client-js" }
-
 datasource db { provider = "postgresql" url = env("DATABASE_URL") }
 
 model User {
@@ -12,12 +11,12 @@ model User {
 }
 
 model Project {
-  id          String   @id @default(cuid())
-  ownerId     String
-  owner       User     @relation(fields: [ownerId], references: [id])
-  title       String?
-  slug        String   @unique
-  storagePath String
-  status      String   @default("pending")
-  createdAt   DateTime @default(now())
+  id         String   @id @default(cuid())
+  ownerId    String
+  owner      User     @relation(fields: [ownerId], references: [id])
+  title      String?
+  slug       String   @unique
+  storageKey String
+  status     String   @default("pending")
+  createdAt  DateTime @default(now())
 }
